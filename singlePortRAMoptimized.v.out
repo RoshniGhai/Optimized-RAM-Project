@@ -1,0 +1,168 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "c:\iverilog\lib\ivl\system.vpi";
+:vpi_module "c:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "c:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "c:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "c:\iverilog\lib\ivl\va_math.vpi";
+S_000001af43472e30 .scope module, "ram" "ram" 2 3;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "rstn";
+    .port_info 2 /INPUT 1 "en";
+    .port_info 3 /INPUT 1 "wr_rd";
+    .port_info 4 /INPUT 32 "data_in";
+    .port_info 5 /INPUT 6 "addr";
+    .port_info 6 /OUTPUT 32 "data_out";
+    .port_info 7 /OUTPUT 1 "out_en";
+P_000001af4345a1d0 .param/l "BURST_LENGTH" 0 2 21, +C4<00000000000000000000000000001000>;
+o000001af434acf98 .functor BUFZ 6, C4<zzzzzz>; HiZ drive
+v000001af43473360_0 .net "addr", 5 0, o000001af434acf98;  0 drivers
+v000001af4345b070_0 .var "burst_active", 0 0;
+v000001af43472fc0 .array "burst_buffer", 7 0, 31 0;
+v000001af43473060_0 .var "burst_counter", 2 0;
+o000001af434ad028 .functor BUFZ 1, C4<z>; HiZ drive
+v000001af43473100_0 .net "clk", 0 0, o000001af434ad028;  0 drivers
+o000001af434ad058 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v000001af4345bb50_0 .net "data_in", 31 0, o000001af434ad058;  0 drivers
+v000001af4345bbf0_0 .var "data_out", 31 0;
+o000001af434ad0b8 .functor BUFZ 1, C4<z>; HiZ drive
+v000001af4345bc90_0 .net "en", 0 0, o000001af434ad0b8;  0 drivers
+v000001af434a10d0_0 .var/i "i", 31 0;
+v000001af434a1170 .array "mem", 0 63, 31 0;
+v000001af434a1210_0 .var "out_en", 0 0;
+o000001af434ad148 .functor BUFZ 1, C4<z>; HiZ drive
+v000001af434a12b0_0 .net "rstn", 0 0, o000001af434ad148;  0 drivers
+o000001af434ad178 .functor BUFZ 1, C4<z>; HiZ drive
+v000001af434a1350_0 .net "wr_rd", 0 0, o000001af434ad178;  0 drivers
+E_000001af4345a290 .event posedge, v000001af43473100_0;
+    .scope S_000001af43472e30;
+T_0 ;
+    %wait E_000001af4345a290;
+    %load/vec4 v000001af4345bc90_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %load/vec4 v000001af434a12b0_0;
+    %nor/r;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.2, 8;
+    %pushi/vec4 0, 0, 32;
+    %assign/vec4 v000001af4345bbf0_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001af434a1210_0, 0;
+    %pushi/vec4 0, 0, 3;
+    %assign/vec4 v000001af43473060_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001af4345b070_0, 0;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/vec4 v000001af434a1350_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.4, 8;
+    %load/vec4 v000001af4345bb50_0;
+    %load/vec4 v000001af43473060_0;
+    %pad/u 5;
+    %ix/vec4 3;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v000001af43472fc0, 0, 4;
+    %load/vec4 v000001af43473060_0;
+    %pad/u 32;
+    %cmpi/u 7, 0, 32;
+    %jmp/0xz  T_0.6, 5;
+    %load/vec4 v000001af43473060_0;
+    %addi 1, 0, 3;
+    %assign/vec4 v000001af43473060_0, 0;
+    %jmp T_0.7;
+T_0.6 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001af434a10d0_0, 0, 32;
+T_0.8 ;
+    %load/vec4 v000001af434a10d0_0;
+    %cmpi/s 8, 0, 32;
+    %jmp/0xz T_0.9, 5;
+    %ix/getv/s 4, v000001af434a10d0_0;
+    %load/vec4a v000001af43472fc0, 4;
+    %load/vec4 v000001af43473360_0;
+    %pad/u 32;
+    %load/vec4 v000001af434a10d0_0;
+    %add;
+    %ix/vec4 3;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v000001af434a1170, 0, 4;
+    %load/vec4 v000001af434a10d0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001af434a10d0_0, 0, 32;
+    %jmp T_0.8;
+T_0.9 ;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001af4345b070_0, 0;
+    %pushi/vec4 0, 0, 3;
+    %assign/vec4 v000001af43473060_0, 0;
+T_0.7 ;
+    %jmp T_0.5;
+T_0.4 ;
+    %load/vec4 v000001af4345b070_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.10, 8;
+    %load/vec4 v000001af43473360_0;
+    %load/vec4 v000001af43473060_0;
+    %pad/u 6;
+    %add;
+    %pad/u 8;
+    %ix/vec4 4;
+    %load/vec4a v000001af434a1170, 4;
+    %assign/vec4 v000001af4345bbf0_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000001af434a1210_0, 0;
+    %load/vec4 v000001af43473060_0;
+    %addi 1, 0, 3;
+    %assign/vec4 v000001af43473060_0, 0;
+    %load/vec4 v000001af43473060_0;
+    %pad/u 32;
+    %cmpi/e 7, 0, 32;
+    %jmp/0xz  T_0.12, 4;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001af434a1210_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001af4345b070_0, 0;
+T_0.12 ;
+    %jmp T_0.11;
+T_0.10 ;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000001af4345b070_0, 0;
+    %pushi/vec4 0, 0, 3;
+    %assign/vec4 v000001af43473060_0, 0;
+T_0.11 ;
+T_0.5 ;
+T_0.3 ;
+    %jmp T_0.1;
+T_0.0 ;
+    %vpi_call 2 62 "$display", "RAM is disabled" {0 0 0};
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_000001af43472e30;
+T_1 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001af434a10d0_0, 0, 32;
+T_1.0 ;
+    %load/vec4 v000001af434a10d0_0;
+    %cmpi/s 64, 0, 32;
+    %jmp/0xz T_1.1, 5;
+    %pushi/vec4 0, 0, 32;
+    %ix/getv/s 4, v000001af434a10d0_0;
+    %store/vec4a v000001af434a1170, 4, 0;
+    %load/vec4 v000001af434a10d0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001af434a10d0_0, 0, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "singlePortRAMoptimized.v";

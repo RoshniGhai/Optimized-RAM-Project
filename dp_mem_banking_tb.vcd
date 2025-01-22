@@ -1,0 +1,243 @@
+$date
+	Tue Oct 29 19:07:18 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb_banking $end
+$var wire 8 ! r_data [7:0] $end
+$var reg 4 " bank_en [3:0] $end
+$var reg 1 # clk $end
+$var reg 5 $ r_addr [4:0] $end
+$var reg 1 % rd $end
+$var reg 1 & rst $end
+$var reg 5 ' w_addr [4:0] $end
+$var reg 8 ( w_data [7:0] $end
+$var reg 1 ) wr $end
+$var integer 32 * i [31:0] $end
+$scope module uut $end
+$var wire 4 + bank_en [3:0] $end
+$var wire 1 # clk $end
+$var wire 5 , r_addr [4:0] $end
+$var wire 1 % rd $end
+$var wire 1 & rst $end
+$var wire 5 - w_addr [4:0] $end
+$var wire 8 . w_data [7:0] $end
+$var wire 1 ) wr $end
+$var reg 8 / r_data [7:0] $end
+$var integer 32 0 i [31:0] $end
+$var integer 32 1 j [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx 1
+bx 0
+bx /
+b0 .
+b0 -
+b0 ,
+b0 +
+bx *
+0)
+b0 (
+b0 '
+1&
+0%
+b0 $
+0#
+b0 "
+bx !
+$end
+#3
+1#
+#5
+0&
+#6
+0#
+#9
+b10000 1
+b100 0
+1#
+#12
+0#
+#15
+1#
+b101 (
+b101 .
+1)
+b1 "
+b1 +
+b0 *
+1&
+#18
+0#
+#21
+1#
+#24
+0#
+#25
+0)
+#27
+1#
+#30
+0#
+b1111 (
+b1111 .
+b1 '
+b1 -
+1)
+b10 "
+b10 +
+b1 *
+#33
+1#
+#36
+0#
+#39
+1#
+#40
+0)
+#42
+0#
+#45
+1#
+b11001 (
+b11001 .
+b10 '
+b10 -
+1)
+b100 "
+b100 +
+b10 *
+#48
+0#
+#51
+1#
+#54
+0#
+#55
+0)
+#57
+1#
+#60
+0#
+b100011 (
+b100011 .
+b11 '
+b11 -
+1)
+b1000 "
+b1000 +
+b11 *
+#63
+1#
+#66
+0#
+#69
+1#
+#70
+0)
+#72
+0#
+#75
+b101 !
+b101 /
+1#
+1%
+b1 "
+b1 +
+b0 *
+#78
+0#
+#81
+1#
+#84
+0#
+#85
+0%
+#87
+1#
+#90
+0#
+b1 $
+b1 ,
+1%
+b10 "
+b10 +
+b1 *
+#93
+b1111 !
+b1111 /
+1#
+#96
+0#
+#99
+1#
+#100
+0%
+#102
+0#
+#105
+b11001 !
+b11001 /
+1#
+b10 $
+b10 ,
+1%
+b100 "
+b100 +
+b10 *
+#108
+0#
+#111
+1#
+#114
+0#
+#115
+0%
+#117
+1#
+#120
+0#
+b11 $
+b11 ,
+1%
+b1000 "
+b1000 +
+b11 *
+#123
+b100011 !
+b100011 /
+1#
+#126
+0#
+#129
+1#
+#130
+0%
+#132
+0#
+#135
+1#
+b100 *
+#138
+0#
+#141
+1#
+#144
+0#
+#147
+1#
+#150
+0#
+#153
+1#
+#155
